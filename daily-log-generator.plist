@@ -14,13 +14,52 @@
             <key>DAILY_LOG_DIRECTORY</key>
             <string>custom_path_to_daily_log_root_directory</string>
         </dict> -->
-        <!-- Run daily at 8am -->
-        <key>StartCalendarInterval</key>
+        <!-- Run daily at 8am, weekdays only -->
+        <array>
             <dict>
                 <key>Hour</key>
                 <integer>8</integer>
                 <key>Minute</key>
                 <integer>0</integer>
+                <key>Weekday</key>
+                <integer>2</integer> <!-- Monday -->
             </dict>
+            <dict>
+                <key>Hour</key>
+                <integer>8</integer>
+                <key>Minute</key>
+                <integer>0</integer>
+                <key>Weekday</key>
+                <integer>3</integer> <!-- Tuesday -->
+            </dict>
+            <dict>
+                <key>Hour</key>
+                <integer>8</integer>
+                <key>Minute</key>
+                <integer>0</integer>
+                <key>Weekday</key>
+                <integer>4</integer> <!-- Wednesday -->
+            </dict>
+            <dict>
+                <key>Hour</key>
+                <integer>8</integer>
+                <key>Minute</key>
+                <integer>0</integer>
+                <key>Weekday</key>
+                <integer>5</integer> <!-- Thursday -->
+            </dict>
+            <dict>
+                <key>Hour</key>
+                <integer>8</integer>
+                <key>Minute</key>
+                <integer>0</integer>
+                <key>Weekday</key>
+                <integer>6</integer> <!-- Friday -->
+            </dict>
+        </array>
+        <key>StandardOutPath</key>
+        <string>/tmp/dlg.out</string>
+        <key>StandardErrorPath</key>
+        <string>/tmp/dlg.err</string>
     </dict> 
 </plist>
