@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"os/user"
@@ -14,7 +15,12 @@ const rootDirEnvVarName = "DAILY_LOG_DIRECTORY"
 
 func main() {
 
-	currentTime := time.Now()
+	daysForward := flag.Int("o", 0, "number of days offset to create log for")
+	flag.Usage = func() {
+		fmt.Println("Usage: dlg [-o <days offset>]")
+	}
+	flag.Parse()
+	currentTime := time.Now().AddDate(0, 0, *daysForward)
 	year := currentTime.Format("2006")
 	month := currentTime.Format("01")
 	day := currentTime.Format("02")
