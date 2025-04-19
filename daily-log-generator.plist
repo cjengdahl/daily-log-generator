@@ -1,20 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"> 
-<plist version="1.0"> 
-    <dict> 
-        <key>Label</key> 
-            <string>daily.log.gen</string> 
-        <key>ProgramArguments</key> 
-            <array> 
-                <string>/usr/local/bin/dlg</string>
-            </array> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>daily.log.gen</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/usr/local/bin/dlg</string>
+        </array>
         <!-- Uncomment to set custom root directory -->
-        <!-- <key>EnvironmentVariables</key>
+        <!--
+        <key>EnvironmentVariables</key>
         <dict>
             <key>DAILY_LOG_DIRECTORY</key>
             <string>custom_path_to_daily_log_root_directory</string>
-        </dict> -->
-        <!-- Run daily at 8am, weekdays only -->
+        </dict>
+        -->
+        <key>StartCalendarInterval</key>
         <array>
             <dict>
                 <key>Hour</key>
@@ -22,7 +24,7 @@
                 <key>Minute</key>
                 <integer>0</integer>
                 <key>Weekday</key>
-                <integer>2</integer> <!-- Monday -->
+                <integer>1</integer> <!-- Monday -->
             </dict>
             <dict>
                 <key>Hour</key>
@@ -30,7 +32,7 @@
                 <key>Minute</key>
                 <integer>0</integer>
                 <key>Weekday</key>
-                <integer>3</integer> <!-- Tuesday -->
+                <integer>2</integer> <!-- Tuesday -->
             </dict>
             <dict>
                 <key>Hour</key>
@@ -38,7 +40,7 @@
                 <key>Minute</key>
                 <integer>0</integer>
                 <key>Weekday</key>
-                <integer>4</integer> <!-- Wednesday -->
+                <integer>3</integer> <!-- Wednesday -->
             </dict>
             <dict>
                 <key>Hour</key>
@@ -46,7 +48,7 @@
                 <key>Minute</key>
                 <integer>0</integer>
                 <key>Weekday</key>
-                <integer>5</integer> <!-- Thursday -->
+                <integer>4</integer> <!-- Thursday -->
             </dict>
             <dict>
                 <key>Hour</key>
@@ -54,12 +56,13 @@
                 <key>Minute</key>
                 <integer>0</integer>
                 <key>Weekday</key>
-                <integer>6</integer> <!-- Friday -->
+                <integer>5</integer> <!-- Friday -->
             </dict>
         </array>
         <key>StandardOutPath</key>
         <string>/tmp/dlg.out</string>
         <key>StandardErrorPath</key>
         <string>/tmp/dlg.err</string>
-    </dict> 
+    </dict>
 </plist>
+

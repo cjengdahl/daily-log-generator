@@ -59,6 +59,10 @@ as needed.
 
 Simply copy the plist to the user launchd agents directory, and load the job.
 - `cp daily-log-generator.plist ~/Library/LaunchAgents`
-- `launchctl load ~/Library/LaunchAgents/daily-log-generator.plist`
+- `launchctl load -w ~/Library/LaunchAgents/daily-log-generator.plist`
+
+To stop the job, unload and remove it
+- `launchctl unload ~/Library/LaunchAgents/daily-log-generator.plist`
+- `rm ~/Library/LaunchAgents/daily-log-generator.plist`
 
 
