@@ -45,6 +45,21 @@ If you want a custom root directory path for your daily logs,
 you can set the environment variable `DAILY_LOG_DIRECTORY`.
 This must be an absolute directory path.
 
+### Templates
+
+You can optionally populate new log files with a template based on the day of the week.
+Create a directory containing markdown files named after each day (e.g., `monday.md`, `tuesday.md`).
+Template content is appended after the date header.
+
+Set the template directory via the environment variable `DAILY_LOG_TEMPLATE_DIRECTORY`,
+or pass it directly with the `-t` flag (flag takes precedence over the env var).
+
+```
+dlg -t /path/to/templates
+```
+
+A `templates/` directory in this repo is gitignored — you can use it to store your own templates locally without committing them.
+
 ### Automation
 
 This tool can be run manually, or you can automate it

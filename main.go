@@ -7,17 +7,20 @@ import (
 	"os/user"
 	"path"
 	"strconv"
+	"strings"
 	"time"
 )
 
 // default is $HOME/daily-logs
 const rootDirEnvVarName = "DAILY_LOG_DIRECTORY"
+const templateDirEnvVarName = "DAILY_LOG_TEMPLATE_DIRECTORY"
 
 func main() {
 
 	daysForward := flag.Int("o", 0, "number of days offset to create log for")
+	templateDirFlag := flag.String("t", "", "path to template directory")
 	flag.Usage = func() {
-		fmt.Println("Usage: dlg [-o <days offset>]")
+		fmt.Println("Usage: dlg [-o <days offset>] [-t <template directory>]")
 	}
 	flag.Parse()
 	currentTime := time.Now().AddDate(0, 0, *daysForward)
@@ -62,6 +65,25 @@ func main() {
 			dayWritten, monthWritten, dayWithSuffix, year))
 	if err != nil {
 		printErrorAndExit(fmt.Errorf("error writing to file: %s", err.Error()))
+	}
+
+	// write template content if a template directory is configured
+	templateDir := os.Getenv(templateDirEnvVarName)
+	if *templateDirFlag != "" {
+		templateDir = *templateDirFlag
+	}
+	if templateDir != "" {
+		weekday := strings.ToLower(currentTime.Format("Monday"))
+		templatePath := path.Join(templateDir, weekday+".md")
+		templateContent, err := os.ReadFile(templatePath)
+		if err == nil {
+			_, err = file.WriteString("\n" + string(templateContent))
+			if err != nil {
+				printErrorAndExit(fmt.Errorf("error writing template to file: %s", err.Error()))
+			}
+		} else if !os.IsNotExist(err) {
+			printErrorAndExit(fmt.Errorf("error reading template file: %s", err.Error()))
+		}
 	}
 
 }

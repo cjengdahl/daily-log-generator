@@ -8,12 +8,14 @@
         <array>
             <string>/usr/local/bin/dlg</string>
         </array>
-        <!-- Uncomment to set custom root directory -->
+        <!-- Uncomment to set custom directories -->
         <!--
         <key>EnvironmentVariables</key>
         <dict>
             <key>DAILY_LOG_DIRECTORY</key>
             <string>custom_path_to_daily_log_root_directory</string>
+            <key>DAILY_LOG_TEMPLATE_DIRECTORY</key>
+            <string>custom_path_to_template_directory</string>
         </dict>
         -->
         <key>StartCalendarInterval</key>
